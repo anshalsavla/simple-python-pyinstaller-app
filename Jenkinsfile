@@ -4,19 +4,13 @@ pipeline {
         stage('Build') {
             agent any
             steps {
-                sh 'python3 -m venv ../jenkins_env'
-                sh 'source ../jenkins_env/bin/activate'
-                sh 'python -m py_compile sources/add2vals.py sources/calc.py'
-                sh 'deactivate'
+                sh './build.sh'
             }
         }
         stage('Test') {
             agent any
             steps {
-                sh 'source ../jenkins_env/bin/activate'
-                sh 'pip install pytest'
-                sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
-                sh 'deactivate'
+                sh './test.sh'
             }
             post {
                 always {
