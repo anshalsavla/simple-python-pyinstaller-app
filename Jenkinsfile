@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             agent any
             steps {
+                sh 'echo $USER'
                 sh 'echo $PATH'
                 sh 'chmod 777 build.sh'
                 sh './build.sh'
