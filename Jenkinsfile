@@ -24,13 +24,10 @@ pipeline {
             }
         }
         stage('Deliver') {
-            agent {
-                docker {
-                    image 'cdrx/pyinstaller-linux:python2'
-                }
-            }
+            agent any
             steps {
-                sh 'pyinstaller --onefile sources/add2vals.py'
+                sh 'chmod 777 deliver.sh'
+                sh './deliver.sh'
             }
             post {
                 success {
