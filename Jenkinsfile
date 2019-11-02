@@ -4,12 +4,14 @@ pipeline {
         stage('Build') {
             agent any
             steps {
+                sh 'chmod 777 build.sh'
                 sh './build.sh'
             }
         }
         stage('Test') {
             agent any
             steps {
+                sh 'chmod 777 test.sh'
                 sh './test.sh'
             }
             post {
