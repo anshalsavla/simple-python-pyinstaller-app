@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             agent any
             steps {
-                sh 'which python3.6'
+                sh 'echo $PATH'
                 sh 'chmod 777 build.sh'
                 sh './build.sh'
             }
